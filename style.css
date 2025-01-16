@@ -120,6 +120,10 @@ body{
     animation: jump .5s normal ease-out;
 }
 
+.jumpingMobile{
+    animation: jump .7s normal ease-out;
+}
+
 @keyframes jump{
     0%{
         bottom: 0px;
@@ -138,4 +142,5 @@ body{
         bottom: 0px;
     }
 }
+
 

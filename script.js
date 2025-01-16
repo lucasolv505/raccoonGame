@@ -20,15 +20,26 @@ const gameOverSound = new Audio('./sound/gameover.mp3')
 
 let start = false
 
+function isMobileDevice() {
+    return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768;
+}
+
 function jump() {
-    jumpSound.play();
-    char.classList.add('jumping');
+    jumpSound.play()
+    
+    if(isMobileDevice()){
+        char.classList.add('jumpingMobile')
+    }else{
+        char.classList.add('jumping')
+    }
+
     setTimeout(() => {
-        char.classList.remove('jumping');
-    }, 600);
+        char.classList.remove('jumping', 'jumpingMobile')
+    }, isMobileDevice()? 1000 : 600);
 }
 
 function gameStart() {
+    
     startBtn.classList.add('hide')
     gameoverText.classList.add('hide')
     changeBtn(false)
